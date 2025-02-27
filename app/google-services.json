@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "500063012800",
+    "firebase_url": "https://hachthon-4e97e-default-rtdb.firebaseio.com",
+    "project_id": "hachthon-4e97e",
+    "storage_bucket": "hachthon-4e97e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500063012800:android:472632c108c89dcfce6a25",
+        "android_client_info": {
+          "package_name": "ru.download.prepodavatel_online"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYteLanflXDESt0uUIKM4YIyv3Bpp5_Aw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500063012800:android:a0ef566d162affbdce6a25",
+        "android_client_info": {
+          "package_name": "ru.vomatix.hachathon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYteLanflXDESt0uUIKM4YIyv3Bpp5_Aw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
