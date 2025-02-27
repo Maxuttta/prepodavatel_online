@@ -15,11 +15,17 @@ import com.squareup.picasso.Picasso
 import com.vk.id.VKID
 
 class MainActivity : AppCompatActivity() {
-    private val profileImage by lazy { findViewById<ImageView>(R.id.profileImage) }
+    private val profileImage by lazy {
+        findViewById<ImageView>(R.id.profileImage)
+        findViewById<ImageView>(R.id.avaIcon)
+    }
 
     private lateinit var chipNavigationBar: ChipNavigationBar
     private lateinit var Home: ConstraintLayout
     private lateinit var Settings: ConstraintLayout
+    private lateinit var Profile: ConstraintLayout
+
+    private var screen = 1
 
     private lateinit var anim1: Animation
     private lateinit var anim2: Animation
@@ -33,12 +39,14 @@ class MainActivity : AppCompatActivity() {
 
         Home = findViewById(R.id.homeScreen)
         Settings = findViewById(R.id.settingsScreen)
+        Profile = findViewById(R.id.profileScreen)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         anim1 = AnimationUtils.loadAnimation(this, R.anim.to_settings_top)
         anim2 = AnimationUtils.loadAnimation(this, R.anim.to_settings_bottom)
         anim3 = AnimationUtils.loadAnimation(this, R.anim.to_home_top)
@@ -48,36 +56,73 @@ class MainActivity : AppCompatActivity() {
         chipNavigationBar.setItemSelected(R.id.home, true)
         loadPrepodData()
 
-        goSettings()
+        goScreens()
     }
 
-    private fun goSettings() {
+    private fun goScreens() {
         chipNavigationBar = findViewById(R.id.bottom_menu)
 
         chipNavigationBar.setOnItemSelectedListener { id ->
             val selectedItemId = chipNavigationBar.getSelectedItemId()
             when(selectedItemId){
                 R.id.home -> {
-                    Home.startAnimation(anim3)
-                    Settings.startAnimation(anim4)
-                    Home.visibility = View.VISIBLE
-                    Settings.visibility = View.GONE
+                    if (screen == 2){
+                        Home.startAnimation(anim3)
+                        Settings.startAnimation(anim4)
+                        Home.visibility = View.VISIBLE
+                        Settings.visibility = View.GONE
+                        Profile.visibility = View.GONE
+                        screen = 1
+                    }else if(screen == 3){
+                        Home.startAnimation(anim3)
+                        Profile.startAnimation(anim4)
+                        Home.visibility = View.VISIBLE
+                        Settings.visibility = View.GONE
+                        Profile.visibility = View.GONE
+                        screen = 1
+                    }
                 }
                 R.id.search -> {
-                    Home.startAnimation(anim1)
-                    Settings.startAnimation(anim2)
-                    Home.visibility = View.GONE
-                    Settings.visibility = View.VISIBLE
+                    if (screen == 1){
+                        Home.startAnimation(anim1)
+                        Settings.startAnimation(anim2)
+                        Home.visibility = View.GONE
+                        Settings.visibility = View.VISIBLE
+                        Profile.visibility = View.GONE
+                        screen = 2
+                    }else if(screen == 3){
+                        Settings.startAnimation(anim3)
+                        Profile.startAnimation(anim4)
+                        Home.visibility = View.GONE
+                        Settings.visibility = View.VISIBLE
+                        Profile.visibility = View.GONE
+                        screen = 2
+                    }
                 }
                 R.id.profile -> {
-
+                    if (screen == 1){
+                        Home.startAnimation(anim1)
+                        Profile.startAnimation(anim2)
+                        Home.visibility = View.GONE
+                        Settings.visibility = View.GONE
+                        Profile.visibility = View.VISIBLE
+                        screen = 3
+                    }else if(screen == 2){
+                        Settings.startAnimation(anim1)
+                        Profile.startAnimation(anim2)
+                        Home.visibility = View.GONE
+                        Settings.visibility = View.GONE
+                        Profile.visibility = View.VISIBLE
+                        screen = 3
+                    }
                 }
             }
         }
     }
 
     private fun loadPrepodData() {
-        if(VKID.instance.accessToken?.idToken != null)
+        if(VKID.instance.accessToken?.idToken != null) {
             Picasso.get().load(VKID.instance.accessToken?.userData?.photo200).into(profileImage)
+        }
     }
 }
