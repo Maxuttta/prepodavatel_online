@@ -30,7 +30,7 @@ class Splash : AppCompatActivity() {
                 finish()
             }
             else{
-                val intent = Intent(this, Authorization::class.java)
+                val intent = Intent(this, LoginScreen::class.java)
                 startActivity(intent)
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out) // Добавление анимации
                 finish()

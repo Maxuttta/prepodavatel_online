@@ -12,7 +12,6 @@ import com.vk.id.VKID
 
 class MainActivity : AppCompatActivity() {
     private val profileImage by lazy { findViewById<ImageView>(R.id.profileImage) }
-    private val imageProfile by lazy { VKID.instance.accessToken?.userData?.photo200 }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun laodPrepodData() {
-        Picasso.get().load(imageProfile).into(profileImage)
+        if(VKID.instance.accessToken?.idToken != null)
+            Picasso.get().load(VKID.instance.accessToken?.userData?.photo200).into(profileImage)
     }
 }

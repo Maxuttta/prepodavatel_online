@@ -1,4 +1,4 @@
-package ru.download.prepodavatel_online
+/*package ru.download.prepodavatel_online
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -781,4 +781,4 @@ class CardAdapter(
     interface Listener {
         fun onClick(message: Message)
     }
-}
+}*/
