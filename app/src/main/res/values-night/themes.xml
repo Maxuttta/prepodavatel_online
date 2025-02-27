@@ -3,5 +3,7 @@
     <style name="Base.Theme.Prepodavatel_online" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:progressDrawable">@drawable/rating_bar_style</item>
+
     </style>
 </resources>
