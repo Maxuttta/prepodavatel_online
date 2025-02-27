@@ -15,6 +15,20 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        addManifestPlaceholders(mapOf(
+            "VKIDRedirectHost" to "vk.com",
+            "VKIDRedirectScheme" to "vk53159767",
+            "VKIDClientID" to "53159767",
+            "VKIDClientSecret" to "yptABrAKTFBdl17H61X0"
+        ))
+
+        addManifestPlaceholders(mapOf(
+            "VKIDRedirectHost" to "vk.com",
+            "VKIDRedirectScheme" to "vk53159767",
+            "VKIDClientID" to "53159767",
+            "VKIDClientSecret" to "yptABrAKTFBdl17H61X0"
+        ))
     }
 
     buildTypes {
@@ -29,6 +43,8 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+        isCoreLibraryDesugaringEnabled = true
+
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -40,7 +56,10 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.glide)
+    implementation(libs.picasso)
+    implementation(libs.onetap.xml)
+    implementation(libs.vkid)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -50,4 +69,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation ("com.github.ismaeldivita:chip-navigation-bar:1.4.0")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }
