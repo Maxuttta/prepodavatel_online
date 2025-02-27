@@ -13,7 +13,7 @@
         app:cnb_iconColor="@color/white"
         app:cnb_textColor="@color/white"/>
     <item
-        android:id="@+id/like"
+        android:id="@+id/profile"
         android:icon="@drawable/profile"
         android:title="Профиль"
         app:cnb_iconColor="@color/white"
