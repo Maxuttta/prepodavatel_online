@@ -26,13 +26,4 @@
     <string name="read">View</string>
     <string name="author_label">Author</string>
 
-    <string name="math_label">Mathematics</string>
-    <string name="higher_math_label">Higher mathematics</string>
-    <string name="topologia">Topology</string>
-    <string name="combinatorika">Combinatorics</string>
-    <string name="geometry">Geometry</string>
-    <string name="trigonometry">Trigonometry</string>
-    <string name="mathanalis">Mathematical analysis</string>
-    <string name="linearalgebra">Linear algebra</string>
-    <string name="algebra">Algebra</string>
 </resources>

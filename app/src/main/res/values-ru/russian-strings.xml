@@ -28,15 +28,6 @@
     <string name="read">Прочитать</string>
     <string name="author_label">Автор</string>
 
-    <string name="math_label">Математика</string>
-    <string name="higher_math_label">Высшая математика</string>
-    <string name="topologia">Топология</string>
-    <string name="combinatorika">Комбинаторика</string>
-    <string name="geometry">Геометрия</string>
-    <string name="trigonometry">Тригонометрия</string>
-    <string name="mathanalis">Математический анализ</string>
-    <string name="linearalgebra">Линейная алгебра</string>
-    <string name="algebra">Алгебра</string>
 
 
 
