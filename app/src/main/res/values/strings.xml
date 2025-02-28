@@ -6,4 +6,33 @@
     <string name="read_sci_fi">Read\nscientific\narticles</string>
     <string name="tests_label">Tests</string>
     <string name="search_rep">Find a\ntutor</string>
+    <string name="main_text">Main</string>
+    <string name="search_text">Search</string>
+    <string name="profile_text">Profile</string>
+
+    <string name="recomendations_text">Recommendations</string>
+
+    <string name="aboutme">About me</string>
+    <string name="name_text">First Name*</string>
+    <string name="surname_text">Last name*</string>
+    <string name="age_text">Age</string>
+
+    <string name="stash_years">Work experience (years)*</string>
+    <string name="profile_desk">Profile Description...</string>
+    <string name="auth_withvkid">Log in with VK ID</string>
+
+    <string name="rating">Rating</string>
+    <string name="scifi_article">Scientific article</string>
+    <string name="read">View</string>
+    <string name="author_label">Author</string>
+
+    <string name="math_label">Mathematics</string>
+    <string name="higher_math_label">Higher mathematics</string>
+    <string name="topologia">Topology</string>
+    <string name="combinatorika">Combinatorics</string>
+    <string name="geometry">Geometry</string>
+    <string name="trigonometry">Trigonometry</string>
+    <string name="mathanalis">Mathematical analysis</string>
+    <string name="linearalgebra">Linear algebra</string>
+    <string name="algebra">Algebra</string>
 </resources>

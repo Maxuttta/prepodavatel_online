@@ -31,7 +31,7 @@
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/paluispdemobold"
                 android:gravity="center"
-                android:text="Рейнинг"
+                android:text="@string/rating"
                 android:textColor="@color/white"
                 android:textSize="10dp" />
 

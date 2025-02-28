@@ -5,6 +5,37 @@
     <string name="main_label">Profesor \nen línea</string>
     <string name="welcome_text">Bienvenido</string>
     <string name="read_sci_fi">Leer\ncientíficos\nartículos</string>
-
     <string name="search_rep">Encontrar\nun tutor</string>
+
+    <string name="main_text">Cabeza</string>
+    <string name="search_text">Búsqueda</string>
+    <string name="profile_text">Perfil</string>
+
+    <string name="recomendations_text">Recomendación</string>
+
+    <string name="aboutme">Sobre mí</string>
+    <string name="name_text">Nombre*</string>
+    <string name="surname_text">Apellido*</string>
+    <string name="age_text">Edad</string>
+
+    <string name="stash_years">Experiencia (años)*</string>
+    <string name="profile_desk">Descripción del perfil...</string>
+    <string name="auth_withvkid">Iniciar sesión CON VK ID</string>
+
+    <string name="rating">Rating</string>
+
+    <string name="scifi_article">Artículo científico</string>
+    <string name="read">Ver</string>
+    <string name="author_label">Author</string>
+
+    <string name="math_label">Matemática</string>
+    <string name="higher_math_label">Matemáticas superiores</string>
+    <string name="topologia">Topología</string>
+    <string name="combinatorika">Combinatoria</string>
+    <string name="geometry">Geometría</string>
+    <string name="trigonometry">Trigonometría</string>
+    <string name="mathanalis">Análisis matemático</string>
+    <string name="linearalgebra">Álgebra lineal</string>
+    <string name="algebra">Álgebra</string>
+
 </resources>

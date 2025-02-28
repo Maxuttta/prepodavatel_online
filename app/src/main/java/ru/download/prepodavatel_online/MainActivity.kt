@@ -5,6 +5,7 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -13,6 +14,9 @@ import androidx.core.view.WindowInsetsCompat
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.squareup.picasso.Picasso
 import com.vk.id.VKID
+import com.vk.id.VKIDUser
+import com.vk.id.refreshuser.VKIDGetUserCallback
+import com.vk.id.refreshuser.VKIDGetUserFail
 
 class MainActivity : AppCompatActivity() {
     private val profileImageInMain by lazy {
@@ -20,6 +24,15 @@ class MainActivity : AppCompatActivity() {
     }
     private val profileImageInAccount by lazy {
         findViewById<ImageView>(R.id.avaIcon)
+    }
+    private val name_of_teacher by lazy {
+        findViewById<TextView>(R.id.name)
+    }
+    private val surname_of_teacher by lazy {
+        findViewById<TextView>(R.id.lastname)
+    }
+    private val age_of_teacher by lazy {
+        findViewById<TextView>(R.id.age)
     }
 
     private lateinit var chipNavigationBar: ChipNavigationBar
@@ -123,9 +136,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadPrepodData() {
-        if(VKID.instance.accessToken?.idToken != null) {
-            Picasso.get().load(VKID.instance.accessToken?.userData?.photo200).into(profileImageInMain)
-            Picasso.get().load(VKID.instance.accessToken?.userData?.photo200).into(profileImageInAccount)
-        }
+        val pref = getSharedPreferences("USERDATA", MODE_PRIVATE)
+
+        Picasso.get().load(VKID.instance.accessToken?.userData?.photo200).into(profileImageInMain)
+        Picasso.get().load(VKID.instance.accessToken?.userData?.photo200).into(profileImageInAccount)
+        name_of_teacher.text = VKID.instance.accessToken?.userData?.firstName
+        surname_of_teacher.text = VKID.instance.accessToken?.userData?.lastName
+
+
     }
 }

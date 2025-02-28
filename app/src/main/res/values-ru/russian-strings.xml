@@ -7,4 +7,37 @@
     <string name="read_sci_fi">Читать\nнаучные\nстатьи</string>
     <string name="search_rep">Найти\nрепетитора</string>
 
+    <string name="main_text">Главная</string>
+    <string name="search_text">Поиск</string>
+    <string name="profile_text">Профиль</string>
+
+    <string name="recomendations_text">Рекомендации</string>
+
+    <string name="aboutme">Обо мне</string>
+    <string name="name_text">Имя*</string>
+    <string name="surname_text">Фамилия*</string>
+    <string name="age_text">Возраст</string>
+
+    <string name="stash_years">Опыт работы (лет)*</string>
+    <string name="profile_desk">Описание профиля...</string>
+    <string name="auth_withvkid">Авторизуйтесь с VK ID</string>
+
+    <string name="rating">Рейтинг</string>
+
+    <string name="scifi_article">Научная статья</string>
+    <string name="read">Прочитать</string>
+    <string name="author_label">Автор</string>
+
+    <string name="math_label">Математика</string>
+    <string name="higher_math_label">Высшая математика</string>
+    <string name="topologia">Топология</string>
+    <string name="combinatorika">Комбинаторика</string>
+    <string name="geometry">Геометрия</string>
+    <string name="trigonometry">Тригонометрия</string>
+    <string name="mathanalis">Математический анализ</string>
+    <string name="linearalgebra">Линейная алгебра</string>
+    <string name="algebra">Алгебра</string>
+
+
+
 </resources>
