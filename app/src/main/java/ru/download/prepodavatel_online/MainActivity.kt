@@ -15,8 +15,10 @@ import com.squareup.picasso.Picasso
 import com.vk.id.VKID
 
 class MainActivity : AppCompatActivity() {
-    private val profileImage by lazy {
+    private val profileImageInMain by lazy {
         findViewById<ImageView>(R.id.profileImage)
+    }
+    private val profileImageInAccount by lazy {
         findViewById<ImageView>(R.id.avaIcon)
     }
 
@@ -122,7 +124,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadPrepodData() {
         if(VKID.instance.accessToken?.idToken != null) {
-            Picasso.get().load(VKID.instance.accessToken?.userData?.photo200).into(profileImage)
+            Picasso.get().load(VKID.instance.accessToken?.userData?.photo200).into(profileImageInMain)
+            Picasso.get().load(VKID.instance.accessToken?.userData?.photo200).into(profileImageInAccount)
         }
     }
 }

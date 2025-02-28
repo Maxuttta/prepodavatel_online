@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Преподаватель онлайн</string>
+
+    <string name="main_label">Преподователь\nонлайн</string>
+    <string name="welcome_text">Добро пожаловать</string>
+    <string name="read_sci_fi">Читать\nнаучные\nстатьи</string>
+    <string name="search_rep">Найти\nрепетитора</string>
+
+</resources>

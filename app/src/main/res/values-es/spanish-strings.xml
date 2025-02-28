@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Profesor en línea</string>
+
+    <string name="main_label">Profesor \nen línea</string>
+    <string name="welcome_text">Bienvenido</string>
+    <string name="read_sci_fi">Leer\ncientíficos\nartículos</string>
+
+    <string name="search_rep">Encontrar\nun tutor</string>
+</resources>
