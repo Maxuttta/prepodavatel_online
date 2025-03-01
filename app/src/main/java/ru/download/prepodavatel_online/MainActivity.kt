@@ -129,20 +129,42 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
     }
 
     private fun updateProfile() {
-        dbRef = FirebaseDatabase.getInstance().getReference("Online").child("Profiles").child("1")
-        val hashMap = hashMapOf<String, Any>(
-            "name" to "${VKID.instance.accessToken?.userData?.firstName}",
-            "lastname" to "${VKID.instance.accessToken?.userData?.lastName}",
-            "avaUrl" to "${VKID.instance.accessToken?.userData?.photo200}",
-            "vkId" to "${VKID.instance.accessToken?.userID}",
-            "tgId" to "${tgId.text}",
-            "subject" to "${subject.text}",
-            "about" to "${about.text}",
-            "age" to "${age.text}",
-            "exp" to "${exp.text}"
-        )
-        Toast.makeText(this@MainActivity,"Сохранено", Toast.LENGTH_SHORT).show()
-        dbRef.updateChildren(hashMap as Map<String, Any>)
+        if ((about.text.toString() != "" && exp.text.toString() == "" && subject.text.toString() == "") &&
+            (about.text.toString() == "" && exp.text.toString() != "" && subject.text.toString() == "")&&
+            (about.text.toString() == "" && exp.text.toString() == "" && subject.text.toString() != "")){
+            Toast.makeText(this@MainActivity,"Заполните все поля пункта 'Преподователь'", Toast.LENGTH_SHORT).show()
+        }else if (about.text.toString() == "" && exp.text.toString() == "" && subject.text.toString() == ""){
+            dbRef = FirebaseDatabase.getInstance().getReference("Online").child("Profiles").child("1")
+            val hashMap = hashMapOf<String, Any>(
+                "name" to "${VKID.instance.accessToken?.userData?.firstName}",
+                "lastname" to "${VKID.instance.accessToken?.userData?.lastName}",
+                "avaUrl" to "${VKID.instance.accessToken?.userData?.photo200}",
+                "vkId" to "${VKID.instance.accessToken?.userID}",
+                "tgId" to "${tgId.text}",
+                "subject" to "${subject.text}",
+                "about" to "${about.text}",
+                "age" to "${age.text}",
+                "exp" to "${exp.text}"
+            )
+            Toast.makeText(this@MainActivity,"Сохранено", Toast.LENGTH_SHORT).show()
+            dbRef.updateChildren(hashMap as Map<String, Any>)
+        } else{
+            dbRef = FirebaseDatabase.getInstance().getReference("Online").child("Profiles").child("1")
+            val hashMap = hashMapOf<String, Any>(
+                "name" to "${VKID.instance.accessToken?.userData?.firstName}",
+                "lastname" to "${VKID.instance.accessToken?.userData?.lastName}",
+                "avaUrl" to "${VKID.instance.accessToken?.userData?.photo200}",
+                "vkId" to "${VKID.instance.accessToken?.userID}",
+                "tgId" to "${tgId.text}",
+                "subject" to "${subject.text}",
+                "about" to "${about.text}",
+                "age" to "${age.text}",
+                "exp" to "${exp.text}"
+            )
+            Toast.makeText(this@MainActivity,"Сохранено", Toast.LENGTH_SHORT).show()
+            dbRef.updateChildren(hashMap as Map<String, Any>)
+        }
+
     }
 
     private fun loadCards() {
