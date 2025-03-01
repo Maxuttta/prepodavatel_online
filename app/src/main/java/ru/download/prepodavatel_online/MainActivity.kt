@@ -1,14 +1,10 @@
 package ru.download.prepodavatel_online
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -23,7 +19,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.squareup.picasso.Picasso
 import com.vk.id.VKID
-
 
 class MainActivity : AppCompatActivity(), CardAdapter.Listener {
     private val profileImageInMain by lazy {
@@ -90,8 +85,6 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
             )
         }
     }
-
-
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

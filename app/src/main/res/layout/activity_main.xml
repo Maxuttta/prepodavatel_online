@@ -641,7 +641,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView5"
-                        android:layout_width="140dp"
+                        android:layout_width="210dp"
                         android:layout_height="50dp"
                         android:backgroundTint="@color/half_gray"
                         android:translationZ="2dp"
@@ -668,7 +668,7 @@
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/paluispdemobold"
                                 android:gravity="center"
-                                android:text="Обо мне"
+                                android:text="Преподаватель"
                                 android:textColor="@color/white"
                                 android:textSize="11dp" />
 
@@ -793,6 +793,7 @@
                                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
 
                                 <EditText
+                                    android:id="@+id/about"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="10dp"
@@ -830,22 +831,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="30dp"
                                 android:fontFamily="@font/paluispdemobold"
                                 android:gravity="center"
-                                android:text="+"
-                                android:textColor="@color/white"
-                                android:textSize="30dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/paluispdemobold"
-                                android:gravity="center"
-                                android:text="Добавить ресурс"
+                                android:text="Сохранить"
                                 android:textColor="@color/white"
                                 android:textSize="12dp"
                                 app:layout_constraintBottom_toBottomOf="parent"

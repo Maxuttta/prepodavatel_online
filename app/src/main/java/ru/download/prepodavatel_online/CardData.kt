@@ -10,7 +10,5 @@ data class CardData(
     var subtitle: String? = null,
     var avaUrl: String? = null,
     var rating: Int? = null,
-    var numOfVoters: Int? = null,
-    var sumOfVoters: Int? = null,
     var vkId: String? = null
 )
