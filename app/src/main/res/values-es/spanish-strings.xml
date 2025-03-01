@@ -14,6 +14,7 @@
 
     <string name="recomendations_text">Recomendación</string>
 
+    <string name="prepod_text">Profesor</string>
     <string name="aboutme">Sobre mí</string>
     <string name="name_text">Nombre*</string>
     <string name="surname_text">Apellido*</string>
@@ -30,4 +31,7 @@
     <string name="author_label">Author</string>
 
     <string name="input_category">Introduzca una categoría:</string>
+    <string name="add_resource">Agregar recurso</string>
+    <string name="input_text">Entrada</string>
+    <string name="save_label">Guardar</string>
 </resources>

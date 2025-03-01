@@ -16,6 +16,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -74,6 +75,7 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
         val category: String = "",
         val description: String = ""
     )
+    private val main by lazy { findViewById<ConstraintLayout>(R.id.main) }
 
     companion object {
         private var teacherData: TeacherData = TeacherData()
@@ -157,7 +159,7 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
                     "age" to "${age.text}",
                     "exp" to "${exp.text}"
                 )
-                Toast.makeText(this@MainActivity,"Сохранено", Toast.LENGTH_SHORT).show()
+                Snackbar.make(main, "Сохранено!", Snackbar.LENGTH_LONG).show()
                 dbRef.updateChildren(hashMap as Map<String, Any>)
                 dbRef1 = FirebaseDatabase.getInstance().getReference("Online").child("Cards").child("${VKID.instance.accessToken?.userID}")
                 dbRef2 = FirebaseDatabase.getInstance().getReference("Online").child("Teachers").child("${VKID.instance.accessToken?.userID}")
@@ -280,18 +282,31 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
     }
 
     private fun loadPrepodData() {
-        val pref = getSharedPreferences("USERDATA", MODE_PRIVATE)
-
         Picasso.get().load(VKID.instance.accessToken?.userData?.photo200).into(profileImageInMain)
-        Picasso.get().load(VKID.instance.accessToken?.userData?.photo200).into(profileImageInAccount)
+        Picasso.get().load(replaceImageSize(VKID.instance.accessToken?.userData?.photo200.toString())).into(profileImageInAccount)
         name_of_teacher.text = VKID.instance.accessToken?.userData?.firstName
         surname_of_teacher.text = VKID.instance.accessToken?.userData?.lastName
-        update(firstName = name_of_teacher.text.toString(), lastName = surname_of_teacher.text.toString())
+        val tgId:TextView = findViewById(R.id.tgId)
+        val experience:TextView = findViewById(R.id.exp)
+        val subject:TextView = findViewById(R.id.subject)
+        val about:TextView = findViewById(R.id.about)
 
+
+        FirebaseDatabase.getInstance().getReference("Online").child("Profiles").child("${VKID.instance.accessToken?.userID}").get().addOnSuccessListener {
+            age_of_teacher.text = it.child("age").value.toString()
+            tgId.text = it.child("tgId").value.toString()
+            experience.text = it.child("exp").value.toString()
+            subject.text = it.child("subject").value.toString()
+            about.text = it.child("about").value.toString()
+        }
     }
 
     override fun onClick(CardData: CardData) {
 
     }
 
+    private fun replaceImageSize(imageUrl: String): String {
+        val baseUrl = imageUrl.substringBeforeLast("=")
+        return "${baseUrl}=250x250"
+    }
 }

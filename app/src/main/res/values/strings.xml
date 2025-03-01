@@ -12,6 +12,7 @@
 
     <string name="recomendations_text">Recommendations</string>
 
+    <string name="prepod_text">Teacher</string>
     <string name="aboutme">About me</string>
     <string name="name_text">First Name*</string>
     <string name="surname_text">Last name*</string>
@@ -26,5 +27,8 @@
     <string name="read">View</string>
     <string name="author_label">Author</string>
     <string name="input_category">Enter a category:</string>
+    <string name="add_resource">Add resource</string>
+    <string name="input_text">Input</string>
+    <string name="save_label">Save</string>
 
 </resources>

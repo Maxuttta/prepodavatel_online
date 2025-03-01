@@ -14,6 +14,7 @@
 
     <string name="recomendations_text">Рекомендации</string>
 
+    <string name="prepod_text">Преподаватель</string>
     <string name="aboutme">Обо мне</string>
     <string name="name_text">Имя*</string>
     <string name="surname_text">Фамилия*</string>
@@ -30,6 +31,9 @@
     <string name="author_label">Автор</string>
 
     <string name="input_category">Введите категорию:</string>
+    <string name="add_resource">Добавить русерс</string>
+    <string name="input_text">Введите</string>
+    <string name="save_label">Сохранить</string>
 
 
 </resources>
