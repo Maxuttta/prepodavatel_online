@@ -29,7 +29,7 @@
     <string name="read">Прочитать</string>
     <string name="author_label">Автор</string>
 
-
+    <string name="input_category">Введите категорию:</string>
 
 
 </resources>

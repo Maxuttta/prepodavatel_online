@@ -4,7 +4,8 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:progressDrawable">@drawable/rating_bar_style</item>
-
+        <item name="colorPrimary">@color/main</item>
+        <item name="colorAccent">@color/main</item>
     </style>
 
     <style name="Theme.Prepodavatel_online" parent="Base.Theme.Prepodavatel_online" />

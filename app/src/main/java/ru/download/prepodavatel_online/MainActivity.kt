@@ -1,9 +1,12 @@
 package ru.download.prepodavatel_online
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -47,6 +50,36 @@ class MainActivity : AppCompatActivity() {
     private lateinit var anim3: Animation
     private lateinit var anim4: Animation
 
+    data class TeacherData(
+        val firstName: String? = null,
+        val lastName: String? = null,
+        val age: Int? = null,
+        val experience: Int? = null,
+        val category: String = "",
+        val description: String = ""
+    )
+
+    companion object {
+        private var teacherData: TeacherData = TeacherData()
+        fun getTeacherData(): TeacherData = teacherData
+        fun update(
+            firstName : String? = null,
+            lastName: String? = null,
+            age: Int? = null,
+            experience: Int? = null,
+            category: String? = null,
+            description: String? = null
+        ) {
+            teacherData = teacherData.copy(
+                firstName = firstName ?: teacherData.firstName,
+                lastName = lastName ?: teacherData.lastName,
+                age = age ?: teacherData.age,
+                experience = experience ?: teacherData.experience,
+                category = category ?: teacherData.category,
+                description = description ?: teacherData.description
+            )
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -142,7 +175,8 @@ class MainActivity : AppCompatActivity() {
         Picasso.get().load(VKID.instance.accessToken?.userData?.photo200).into(profileImageInAccount)
         name_of_teacher.text = VKID.instance.accessToken?.userData?.firstName
         surname_of_teacher.text = VKID.instance.accessToken?.userData?.lastName
-
+        update(firstName = name_of_teacher.text.toString(), lastName = surname_of_teacher.text.toString())
 
     }
+
 }

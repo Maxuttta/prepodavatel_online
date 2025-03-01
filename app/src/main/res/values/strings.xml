@@ -25,5 +25,6 @@
     <string name="scifi_article">Scientific article</string>
     <string name="read">View</string>
     <string name="author_label">Author</string>
+    <string name="input_category">Enter a category:</string>
 
 </resources>

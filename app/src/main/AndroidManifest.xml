@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Prepodavatel_online"
         tools:targetApi="31">
+
+        <meta-data android:name="android.app.splash_screen" android:value="false" />
         <activity android:name=".LoginScreen"
             android:exported="false"/>
         <activity
