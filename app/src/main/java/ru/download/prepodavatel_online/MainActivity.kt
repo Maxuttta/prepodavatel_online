@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -47,6 +49,11 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
     private lateinit var cardRec: RecyclerView
     private lateinit var adapter: CardAdapter
 
+    private lateinit var age: EditText
+    private lateinit var tgId: EditText
+    private lateinit var exp: EditText
+    private lateinit var subject: EditText
+    private lateinit var about: EditText
 
     private var screen = 1
 
@@ -94,6 +101,11 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
         Home = findViewById(R.id.homeScreen)
         Settings = findViewById(R.id.settingsScreen)
         Profile = findViewById(R.id.profileScreen)
+        age = findViewById(R.id.age)
+        tgId = findViewById(R.id.tgId)
+        exp = findViewById(R.id.exp)
+        subject = findViewById(R.id.subject)
+        about = findViewById(R.id.about)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -112,7 +124,25 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
         loadPrepodData()
         goScreens()
         loadCards()
+        updateProfile()
         adapter = CardAdapter(this)
+    }
+
+    private fun updateProfile() {
+        dbRef = FirebaseDatabase.getInstance().getReference("Online").child("Profiles").child("1")
+        val hashMap = hashMapOf<String, Any>(
+            "name" to "${VKID.instance.accessToken?.userData?.firstName}",
+            "lastname" to "${VKID.instance.accessToken?.userData?.lastName}",
+            "avaUrl" to "${VKID.instance.accessToken?.userData?.photo200}",
+            "vkId" to "${VKID.instance.accessToken?.userID}",
+            "tgId" to "${tgId.text}",
+            "subject" to "${subject.text}",
+            "about" to "${about.text}",
+            "age" to "${age.text}",
+            "exp" to "${exp.text}"
+        )
+        Toast.makeText(this@MainActivity,"Сохранено", Toast.LENGTH_SHORT).show()
+        dbRef.updateChildren(hashMap as Map<String, Any>)
     }
 
     private fun loadCards() {
