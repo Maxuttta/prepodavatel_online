@@ -9,6 +9,8 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
+import com.vk.id.VKID
 
 
 @Suppress("NAME_SHADOWING")
@@ -90,7 +92,10 @@ class CardAdapter(val context: Context) :
         if (holder.javaClass == CardTeacherHolder::class.java) {
             val holder = holder as CardTeacherHolder
             holder.apply {
-
+                name.text = currentCard.name
+                lastname.text = currentCard.lastname
+                subject.text = currentCard.subject
+                Picasso.get().load(currentCard.avaUrl).into(ava)
             }
         } else if (holder.javaClass == CardArticleHolder::class.java) {
             val holder = holder as CardArticleHolder
