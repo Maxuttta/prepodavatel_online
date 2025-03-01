@@ -201,13 +201,11 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
             when (eventType) {
                 1 -> {
                     adapter.updateItem(snapshot.getCardModel())
-                    Toast.makeText(this@MainActivity,"Получено", Toast.LENGTH_SHORT).show()
 
                 }
 
                 2 -> {
                     adapter.updateItem(snapshot.getCardModel())
-                    Toast.makeText(this@MainActivity,"Получено", Toast.LENGTH_SHORT).show()
 
                 }
 

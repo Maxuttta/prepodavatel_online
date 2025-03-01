@@ -95,7 +95,9 @@ class CardAdapter(val context: Context) :
                 name.text = currentCard.name
                 lastname.text = currentCard.lastname
                 subject.text = currentCard.subject
-                Picasso.get().load(currentCard.avaUrl).into(ava)
+                val avaUr = replaceImageSize("${currentCard.avaUrl}")
+                Picasso.get().load(avaUr).into(ava)
+                rating.rating = currentCard.rating!!.toFloat()
             }
         } else if (holder.javaClass == CardArticleHolder::class.java) {
             val holder = holder as CardArticleHolder
@@ -144,5 +146,10 @@ class CardAdapter(val context: Context) :
     }
     interface Listener {
         fun onClick(CardData: CardData)
+    }
+
+    fun replaceImageSize(imageUrl: String): String {
+        val baseUrl = imageUrl.substringBeforeLast("=")
+        return "${baseUrl}=250x250"
     }
 }
