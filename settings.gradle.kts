@@ -22,6 +22,9 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://artifactory-external.vkpartner.ru/artifactory/vkid-sdk-android/")
         }
+        maven(
+            url = uri("https://artifactory-external.vkpartner.ru/artifactory/maven")
+        )
     }
 }
 

@@ -15,6 +15,7 @@ vkid = "2.0.0"
 onetapXml = "2.0.0"
 googleGmsGoogleServices = "4.4.2"
 firebaseDatabase = "21.0.0"
+firebaseDatabaseKtx = "21.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -30,6 +31,7 @@ onetap-xml = { module = "com.vk.id:onetap-xml", version.ref = "onetapXml" }
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 vkid = { module = "com.vk.id:vkid", version.ref = "vkid" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+firebase-database-ktx = { group = "com.google.firebase", name = "firebase-database-ktx", version.ref = "firebaseDatabaseKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
