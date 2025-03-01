@@ -1,6 +1,9 @@
 package ru.download.prepodavatel_online
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.vk.id.VKID
+import java.util.Locale
 
 
 class Splash : AppCompatActivity() {
@@ -40,4 +44,7 @@ class Splash : AppCompatActivity() {
 
         }, 1000)
     }
+
+
+
 }

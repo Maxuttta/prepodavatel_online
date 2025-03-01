@@ -13,4 +13,4 @@ data class ProfileData (
     var about: String? = null,
     var age: String? = null,
     var exp: String? = null
-    )
+)

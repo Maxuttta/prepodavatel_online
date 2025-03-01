@@ -1,7 +1,10 @@
 package ru.download.prepodavatel_online
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
@@ -14,6 +17,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -28,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.squareup.picasso.Picasso
 import com.vk.id.VKID
+import java.util.Locale
 
 class MainActivity : AppCompatActivity(), CardAdapter.Listener {
     private val profileImageInMain by lazy {
@@ -135,7 +140,6 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
 
         chipNavigationBar.setItemSelected(R.id.home, true)
         adapter = CardAdapter(this)
-
 
 
         loadPrepodData()
