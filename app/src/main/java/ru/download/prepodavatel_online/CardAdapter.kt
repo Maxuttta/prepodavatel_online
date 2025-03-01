@@ -118,7 +118,7 @@ class CardAdapter(val context: Context) :
     }
 
     fun updateItem(item: CardData) {
-        val index = cardList.indexOfFirst { it.id == item.id }
+        val index = cardList.indexOfFirst { it.vkId == item.vkId }
         if (index != -1) {
             val newList = mutableListOf<CardData>()
             newList.addAll(cardList)
@@ -132,7 +132,7 @@ class CardAdapter(val context: Context) :
     }
 
     fun removeItem(item: CardData) {
-        val index = cardList.indexOfFirst { it.id == item.id }
+        val index = cardList.indexOfFirst { it.vkId == item.vkId }
         cardList.removeAt(index)
         notifyItemRemoved(index)
         notifyItemRangeChanged(index, cardList.size)

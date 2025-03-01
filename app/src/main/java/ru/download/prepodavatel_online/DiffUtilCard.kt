@@ -15,7 +15,7 @@ class DiffUtilCard (
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].id == newList[newItemPosition].id
+        return oldList[oldItemPosition].vkId == newList[newItemPosition].vkId
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

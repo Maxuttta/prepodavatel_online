@@ -1,7 +1,6 @@
 package ru.download.prepodavatel_online
 
 data class CardData(
-    var id: String? = null,
     var name: String? = null,
     var lastname: String? = null,
     var type: String? = null,

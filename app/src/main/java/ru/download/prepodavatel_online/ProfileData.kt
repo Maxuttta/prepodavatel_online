@@ -12,5 +12,5 @@ data class ProfileData (
     var rating: Int? = null,
     var about: String? = null,
     var age: String? = null,
-    var staff: Int? = null
+    var exp: String? = null
     )
