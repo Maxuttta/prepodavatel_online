@@ -12,7 +12,8 @@
         android:id="@+id/homeScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:translationZ="30dp">
+        android:translationZ="30dp"
+        android:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -42,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/paluispdemobold"
-                android:text="Преподаватель\nонлайн"
+                android:text="@string/main_label"
                 android:textColor="@color/white"
                 android:textSize="10dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView2"
@@ -99,7 +100,7 @@
                         android:gravity="left"
                         android:layout_marginTop="15dp"
                         android:layout_marginStart="15dp"
-                        android:text="Читать\nнаучные\nстатьи"
+                        android:text="@string/read_sci_fi"
                         android:textColor="@color/white"
                         android:textSize="13dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -149,7 +150,7 @@
                         android:gravity="left"
                         android:layout_marginTop="15dp"
                         android:layout_marginStart="15dp"
-                        android:text="Тесты"
+                        android:text="@string/tests_label"
                         android:textColor="@color/white"
                         android:textSize="13dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -182,10 +183,11 @@
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView4"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             app:cardCornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -204,11 +206,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/paluispdemobold"
                     android:gravity="left"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="15dp"
-                    android:text="Найти\nрепетитора"
+                    android:text="@string/search_rep"
                     android:textColor="@color/white"
                     android:textSize="13dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -226,22 +228,69 @@
                 <ImageView
                     android:layout_width="180dp"
                     android:layout_height="180dp"
-                    android:src="@drawable/w3"
-                    android:translationZ="2dp"
                     android:layout_marginEnd="50dp"
                     android:layout_marginBottom="-10dp"
+                    android:src="@drawable/w3"
+                    android:translationZ="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
                 <ImageView
                     android:layout_width="210dp"
                     android:layout_height="210dp"
-                    android:src="@drawable/w4"
-                    android:translationZ="2dp"
                     android:layout_marginEnd="-25dp"
                     android:layout_marginBottom="-10dp"
+                    android:src="@drawable/w4"
+                    android:translationZ="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView4"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="15dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/add"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_back">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:gravity="center"
+                    android:textSize="30dp"
+                    android:fontFamily="@font/paluispdemobold"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/paluispdemobold"
+                    android:gravity="center"
+                    android:text="Добавить ресурс"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -285,12 +334,14 @@
 
             <EditText
                 android:id="@+id/textView3"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="70dp"
                 android:fontFamily="@font/gothampro"
-                android:text="Поиск"
+                android:backgroundTint="@android:color/transparent"
+                android:hint="Поиск"
+                android:textColorHint="@color/gray1"
                 android:textColor="#6B6B6B"
                 android:textSize="20dp"
                 android:textStyle="bold"
@@ -413,7 +464,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView3"
                         android:layout_width="match_parent"
-                        android:layout_height="220dp"
+                        android:layout_height="280dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="-20dp"
                         android:layout_marginEnd="20dp"
@@ -466,6 +517,7 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
+                                android:id="@+id/textView7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
@@ -502,19 +554,23 @@
 
                             <EditText
                                 android:id="@+id/age"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="-3dp"
-                                android:layout_marginBottom="-6dp"
+                                android:layout_marginEnd="40dp"
+                                android:layout_marginStart="40dp"
+                                android:layout_marginBottom="-5dp"
+                                android:gravity="end"
                                 android:backgroundTint="@android:color/transparent"
                                 android:fontFamily="@font/gothampro_bold"
-                                android:text="17"
+                                android:hint="Ввод"
+                                android:textColorHint="@color/gray1"
                                 android:textColor="@color/white"
                                 android:textSize="15dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/constraintLayout7"
                                 app:layout_constraintEnd_toEndOf="@+id/constraintLayout3" />
 
                             <TextView
+                                android:id="@+id/textView9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
@@ -531,6 +587,48 @@
                                 android:layout_height="1dp"
                                 android:layout_marginStart="40dp"
                                 android:layout_marginTop="180dp"
+                                android:layout_marginEnd="40dp"
+                                android:background="@color/white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <EditText
+                                android:id="@+id/tgId"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="40dp"
+                                android:layout_marginEnd="40dp"
+                                android:layout_marginBottom="-5dp"
+                                android:gravity="end"
+                                android:backgroundTint="@android:color/transparent"
+                                android:fontFamily="@font/gothampro_bold"
+                                android:hint="Ввод"
+                                android:textColorHint="@color/gray1"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout6"
+                                app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
+                                app:layout_constraintStart_toStartOf="@+id/constraintLayout6" />
+
+                            <TextView
+                                android:id="@+id/textView8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="@font/gothampro"
+                                android:text="Telegram ID"
+                                android:textColor="@color/white"
+                                android:textSize="13dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout6"
+                                app:layout_constraintStart_toStartOf="@+id/constraintLayout3" />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/constraintLayout6"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginStart="40dp"
+                                android:layout_marginTop="240dp"
                                 android:layout_marginEnd="40dp"
                                 android:background="@color/white"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -579,19 +677,20 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/cardView6"
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
                         android:layout_marginStart="20dp"
+                        android:layout_marginTop="-20dp"
                         android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="600dp"
                         android:backgroundTint="@color/half_gray"
                         android:outlineAmbientShadowColor="@android:color/transparent"
                         android:outlineSpotShadowColor="@android:color/transparent"
                         app:cardCornerRadius="25dp"
-                        android:layout_marginTop="-20dp"
-                        android:layout_marginBottom="600dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/avaMain"
                         app:layout_constraintStart_toStartOf="@+id/avaMain"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/cardView5">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -600,25 +699,33 @@
 
                             <EditText
                                 android:id="@+id/exp"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="40dp"
+                                android:layout_marginEnd="40dp"
+                                android:layout_marginBottom="-5dp"
                                 android:backgroundTint="@android:color/transparent"
                                 android:fontFamily="@font/gothampro_bold"
-                                android:text="17"
+                                android:gravity="end"
+                                android:hint="Ввод"
                                 android:inputType="number"
+                                android:text=""
                                 android:textColor="@color/white"
+                                android:textColorHint="@color/gray1"
                                 android:textSize="15dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/constraintLayout8"
-                                app:layout_constraintEnd_toEndOf="@+id/constraintLayout8" />
+                                app:layout_constraintEnd_toEndOf="@+id/constraintLayout8"
+                                app:layout_constraintStart_toStartOf="@+id/textView10" />
 
                             <TextView
+                                android:id="@+id/textView10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
                                 android:fontFamily="@font/gothampro"
                                 android:text="Опыт работы (лет)*"
                                 android:textColor="@color/white"
                                 android:textSize="13dp"
-                                android:layout_marginBottom="5dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/constraintLayout8"
                                 app:layout_constraintStart_toStartOf="@+id/constraintLayout8" />
 
@@ -642,22 +749,22 @@
                                 android:layout_marginEnd="40dp"
                                 android:backgroundTint="@android:color/transparent"
                                 android:fontFamily="@font/gothampro_bold"
-                                android:textColorHint="@color/half_gray2"
                                 android:hint="@string/input_category"
-                                android:textColor="@color/white"
-                                android:textSize="15dp"
                                 android:maxLines="3"
+                                android:textColor="@color/white"
+                                android:textColorHint="@color/half_gray2"
+                                android:textSize="15dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/constraintLayout9"
                                 app:layout_constraintEnd_toEndOf="@+id/constraintLayout9"
-                                app:layout_constraintStart_toStartOf="@+id/constraintLayout9"/>
+                                app:layout_constraintStart_toStartOf="@+id/constraintLayout9" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
                                 android:fontFamily="@font/gothampro"
                                 android:textColor="@color/white"
                                 android:textSize="13dp"
-                                android:layout_marginBottom="5dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/constraintLayout9"
                                 app:layout_constraintStart_toStartOf="@+id/constraintLayout9" />
 
@@ -669,20 +776,18 @@
                                 android:layout_marginTop="120dp"
                                 android:layout_marginEnd="40dp"
                                 android:background="@color/white"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="match_parent"
                                 android:layout_height="140dp"
-                                android:backgroundTint="@color/half_gray"
                                 android:layout_marginStart="20dp"
-                                android:layout_marginEnd="20dp"
-                                app:cardCornerRadius="15dp"
                                 android:layout_marginTop="20dp"
-                                android:outlineSpotShadowColor="@android:color/transparent"
+                                android:layout_marginEnd="20dp"
+                                android:backgroundTint="@color/half_gray"
                                 android:outlineAmbientShadowColor="@android:color/transparent"
+                                android:outlineSpotShadowColor="@android:color/transparent"
+                                app:cardCornerRadius="15dp"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
@@ -690,15 +795,63 @@
                                 <EditText
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginEnd="10dp"
-                                    android:textSize="16dp"
                                     android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:backgroundTint="@android:color/transparent"
+                                    android:hint="Описание профиля..."
                                     android:textColor="@color/white"
                                     android:textColorHint="@color/half_gray2"
-                                    android:backgroundTint="@android:color/transparent"
-                                    android:hint="Описание профиля..."/>
+                                    android:textSize="16dp" />
 
                             </androidx.cardview.widget.CardView>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/card_back"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cardView6"
+                        app:cardCornerRadius="15dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/save"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="@drawable/card_back">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="30dp"
+                                android:fontFamily="@font/paluispdemobold"
+                                android:gravity="center"
+                                android:text="+"
+                                android:textColor="@color/white"
+                                android:textSize="30dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/paluispdemobold"
+                                android:gravity="center"
+                                android:text="Добавить ресурс"
+                                android:textColor="@color/white"
+                                android:textSize="12dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
