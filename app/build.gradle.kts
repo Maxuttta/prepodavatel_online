@@ -73,7 +73,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation ("com.github.ismaeldivita:chip-navigation-bar:1.4.0")
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
-    implementation(platform("ru.rustore.sdk:bom:2025.02.01"))
-    implementation("ru.rustore.sdk:billingclient")
+    
 
 }
