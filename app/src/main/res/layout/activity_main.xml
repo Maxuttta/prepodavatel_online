@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/paluispdemobold"
-                android:text="@string/main_label"
+                android:text="Преподаватель\nонлайн"
                 android:textColor="@color/white"
                 android:textSize="10dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView2"
@@ -99,7 +99,7 @@
                         android:gravity="left"
                         android:layout_marginTop="15dp"
                         android:layout_marginStart="15dp"
-                        android:text="@string/read_sci_fi"
+                        android:text="Читать\nнаучные\nстатьи"
                         android:textColor="@color/white"
                         android:textSize="13dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -149,7 +149,7 @@
                         android:gravity="left"
                         android:layout_marginTop="15dp"
                         android:layout_marginStart="15dp"
-                        android:text="@string/tests_label"
+                        android:text="Тесты"
                         android:textColor="@color/white"
                         android:textSize="13dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -208,7 +208,7 @@
                     android:gravity="left"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="15dp"
-                    android:text="@string/search_rep"
+                    android:text="Найти\nрепетитора"
                     android:textColor="@color/white"
                     android:textSize="13dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -290,7 +290,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="70dp"
                 android:fontFamily="@font/gothampro"
-                android:hint="@string/search_text"
+                android:text="Поиск"
                 android:textColor="#6B6B6B"
                 android:textSize="20dp"
                 android:textStyle="bold"
@@ -306,7 +306,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
             android:fontFamily="@font/paluispdemobold"
-            android:text="@string/recomendations_text"
+            android:text="Рекомендации"
             android:textColor="@color/white"
             android:textSize="12dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -314,6 +314,7 @@
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cardRec"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="130dp"
@@ -348,7 +349,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/paluispdemobold"
-                        android:text="@string/profile_text"
+                        android:text="Профиль"
                         android:textColor="@color/white"
                         android:textSize="14dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -401,7 +402,7 @@
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/paluispdemobold"
                                 android:gravity="center"
-                                android:text="@string/aboutme"
+                                android:text="Обо мне"
                                 android:textColor="@color/white"
                                 android:textSize="11dp"/>
 
@@ -434,7 +435,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
                                 android:fontFamily="@font/gothampro"
-                                android:text="@string/name_text"
+                                android:text="Имя*"
                                 android:textColor="@color/white"
                                 android:textSize="13dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
@@ -469,7 +470,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
                                 android:fontFamily="@font/gothampro"
-                                android:text="@string/surname_text"
+                                android:text="Фамилия*"
                                 android:textColor="@color/white"
                                 android:textSize="13dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/constraintLayout5"
@@ -518,7 +519,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
                                 android:fontFamily="@font/gothampro"
-                                android:text="@string/age_text"
+                                android:text="Возраст"
                                 android:textColor="@color/white"
                                 android:textSize="13dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/constraintLayout7"
@@ -569,7 +570,7 @@
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/paluispdemobold"
                                 android:gravity="center"
-                                android:text="@string/aboutme"
+                                android:text="Обо мне"
                                 android:textColor="@color/white"
                                 android:textSize="11dp" />
 
@@ -614,7 +615,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/gothampro"
-                                android:text="@string/stash_years"
+                                android:text="Опыт работы (лет)*"
                                 android:textColor="@color/white"
                                 android:textSize="13dp"
                                 android:layout_marginBottom="5dp"
@@ -695,7 +696,7 @@
                                     android:textColor="@color/white"
                                     android:textColorHint="@color/half_gray2"
                                     android:backgroundTint="@android:color/transparent"
-                                    android:hint="@string/profile_desk"/>
+                                    android:hint="Описание профиля..."/>
 
                             </androidx.cardview.widget.CardView>
 

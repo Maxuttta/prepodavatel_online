@@ -1,5 +1,6 @@
 package ru.download.prepodavatel_online
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,6 +15,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.squareup.picasso.Picasso
 import com.vk.id.VKID
@@ -21,7 +26,7 @@ import com.vk.id.VKIDUser
 import com.vk.id.refreshuser.VKIDGetUserCallback
 import com.vk.id.refreshuser.VKIDGetUserFail
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CardAdapter.Listener {
     private val profileImageInMain by lazy {
         findViewById<ImageView>(R.id.profileImage)
     }
@@ -38,10 +43,16 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.age)
     }
 
+    private lateinit var childEventListener: ChildEventListener
+    private lateinit var dbRef: DatabaseReference
+
     private lateinit var chipNavigationBar: ChipNavigationBar
     private lateinit var Home: ConstraintLayout
     private lateinit var Settings: ConstraintLayout
     private lateinit var Profile: ConstraintLayout
+    private lateinit var cardRec: RecyclerView
+    private lateinit var adapter: CardAdapter
+
 
     private var screen = 1
 
@@ -80,6 +91,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
     }
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -101,10 +113,40 @@ class MainActivity : AppCompatActivity() {
         anim4 = AnimationUtils.loadAnimation(this, R.anim.to_home_bottom)
 
         chipNavigationBar = findViewById(R.id.bottom_menu)
+
         chipNavigationBar.setItemSelected(R.id.home, true)
         loadPrepodData()
-
         goScreens()
+        loadCards()
+        adapter = CardAdapter(this)
+    }
+
+    private fun loadCards() {
+        cardRec = findViewById(R.id.cardRec)
+        dbRef = FirebaseDatabase.getInstance().getReference("Online").child("Cards")
+        childEventListener = AppChildEventListener { snapshot, eventType ->
+            when (eventType) {
+                1 -> {
+                        adapter.updateItem(snapshot.getCardModel())
+                    cardRec.scrollToPosition(
+                        cardRec.adapter!!.itemCount - 1
+                    )
+                }
+
+                2 -> {
+                    adapter.updateItem(snapshot.getCardModel())
+                    cardRec.scrollToPosition(
+                        cardRec.adapter!!.itemCount - 1
+                    )
+                }
+
+                3 -> {
+                    adapter.removeItem(snapshot.getCardModel())
+                }
+            }
+
+        }
+        dbRef.addChildEventListener(childEventListener)
     }
 
     private fun goScreens() {
@@ -176,6 +218,10 @@ class MainActivity : AppCompatActivity() {
         name_of_teacher.text = VKID.instance.accessToken?.userData?.firstName
         surname_of_teacher.text = VKID.instance.accessToken?.userData?.lastName
         update(firstName = name_of_teacher.text.toString(), lastName = surname_of_teacher.text.toString())
+
+    }
+
+    override fun onClick(CardData: CardData) {
 
     }
 
