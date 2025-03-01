@@ -5,6 +5,7 @@
     <string name="main_label">Profesor \nen línea</string>
     <string name="welcome_text">Bienvenido</string>
     <string name="read_sci_fi">Leer\ncientíficos\nartículos</string>
+    <string name="read_sci_fi_for_top">Leer\ncientíficos artículos</string>
     <string name="search_rep">Encontrar\nun tutor</string>
     <string name="tests_label">Vídeos\neducativos</string>
 

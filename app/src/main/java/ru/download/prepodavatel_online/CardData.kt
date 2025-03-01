@@ -9,5 +9,7 @@ data class CardData(
     var subtitle: String? = null,
     var avaUrl: String? = null,
     var rating: Int? = null,
-    var vkId: String? = null
+    var vkId: String? = null,
+    var author: String? = null,
+    var deskription: String? = null
 )

@@ -19,6 +19,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -77,6 +78,8 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
     private lateinit var anim2: Animation
     private lateinit var anim3: Animation
     private lateinit var anim4: Animation
+
+    private val scientific_articles2 by lazy { findViewById<CardView>(R.id.scientific_articles) }
 
     data class TeacherData(
         val firstName: String? = null,
@@ -148,6 +151,16 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
         updateProfile()
         cardRec.layoutManager = LinearLayoutManager(this@MainActivity)
         cardRec.adapter = adapter
+        loadListenersOnButtons()
+    }
+
+    private fun loadListenersOnButtons() {
+        scientific_articles2.setOnClickListener {
+            val intent = Intent(this, scientific_articles::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+            finish()
+        }
     }
 
     private fun updateProfile() {

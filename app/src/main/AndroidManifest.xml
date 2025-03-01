@@ -12,17 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Prepodavatel_online"
         tools:targetApi="31">
+        <activity
+            android:name=".Article_about"
+            android:exported="false" />
+        <activity
+            android:name=".scientific_articles"
+            android:exported="false" />
+        <activity
+            android:name=".videos_activity"
+            android:exported="false" />
 
-        <meta-data android:name="android.app.splash_screen" android:value="false" />
+        <meta-data
+            android:name="android.app.splash_screen"
+            android:value="false" />
+
         <activity
-            android:screenOrientation="portrait"
             android:name=".LoginScreen"
-            android:exported="false">
-        </activity>
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".Splash"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,13 +41,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:screenOrientation="portrait"
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="ru.download.prepodavatel_online.rustore.scheme" />
             </intent-filter>
         </activity>

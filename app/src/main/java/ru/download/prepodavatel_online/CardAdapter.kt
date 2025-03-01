@@ -3,12 +3,14 @@ package ru.download.prepodavatel_online
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat.startActivity
@@ -43,6 +45,7 @@ class CardAdapter(val context: Context) :
         val title = itemView.findViewById<TextView>(R.id.title)
         val subtitle = itemView.findViewById<TextView>(R.id.subtitle)
         val author = itemView.findViewById<TextView>(R.id.author)
+        val read_text = itemView.findViewById<ConstraintLayout>(R.id.read_text)
     }
 
     class CardTestHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -123,7 +126,20 @@ class CardAdapter(val context: Context) :
             }
         } else if (holder.javaClass == CardArticleHolder::class.java) {
             val holder = holder as CardArticleHolder
-            holder.apply {  }
+            holder.apply {
+                title.text = currentCard.title
+                subtitle.text = currentCard.subtitle
+                author.text = "Автор: ${currentCard.author}"
+                read_text.setOnClickListener {
+                    val intent = Intent(context, Article_about::class.java).apply {
+                        putExtra("title", currentCard.title)
+                        putExtra("subtitle", currentCard.subtitle)
+                        putExtra("author", currentCard.author)
+                        putExtra("deskription", currentCard.deskription)
+                    }
+                    context.startActivity(intent)
+                }
+            }
         }
         else {
             val holder = holder as CardTestHolder

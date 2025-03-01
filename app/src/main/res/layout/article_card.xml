@@ -24,7 +24,7 @@
             tools:layout_editor_absoluteY="0dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout4"
+            android:id="@+id/read_text"
             android:layout_width="140dp"
             android:layout_height="40dp"
             android:layout_marginEnd="10dp"
