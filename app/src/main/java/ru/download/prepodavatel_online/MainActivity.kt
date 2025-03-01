@@ -2,6 +2,8 @@ package ru.download.prepodavatel_online
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -59,6 +61,7 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
     private lateinit var subject: EditText
     private lateinit var about: EditText
     private lateinit var save: ConstraintLayout
+    private val searchText by lazy { findViewById<EditText>(R.id.searchText) }
 
     private var screen = 1
 
@@ -203,22 +206,35 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
             when (eventType) {
                 1 -> {
                     adapter.updateItem(snapshot.getCardModel())
-
                 }
 
                 2 -> {
                     adapter.updateItem(snapshot.getCardModel())
-
                 }
 
                 3 -> {
                     adapter.removeItem(snapshot.getCardModel())
                 }
-
             }
         }
         dbRef.addChildEventListener(childEventListener)
+        setupSearch()
     }
+
+    private fun setupSearch() {
+        val searchText = findViewById<EditText>(R.id.searchText)
+        searchText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                adapter.filter(s.toString()) // Фильтруем список
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+    }
+
+
 
     private fun goScreens() {
         chipNavigationBar = findViewById(R.id.bottom_menu)

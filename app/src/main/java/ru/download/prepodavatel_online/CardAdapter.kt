@@ -22,6 +22,7 @@ class CardAdapter(val context: Context) :
     private val ITEM_TEACHER = 1
 
     private lateinit var mDiffResult: DiffUtil.DiffResult
+    private var fullList = mutableListOf<CardData>()
 
     class CardTeacherHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name = itemView.findViewById<TextView>(R.id.name)
@@ -122,6 +123,9 @@ class CardAdapter(val context: Context) :
         mDiffResult = DiffUtil.calculateDiff(DiffUtilCard(cardList, newList))
         mDiffResult.dispatchUpdatesTo(this)
         cardList = newList
+        fullList.add(item)
+        filter("")
+
     }
 
     fun updateItem(item: CardData) {
@@ -133,9 +137,14 @@ class CardAdapter(val context: Context) :
             mDiffResult = DiffUtil.calculateDiff(DiffUtilCard(cardList, newList))
             mDiffResult.dispatchUpdatesTo(this)
             cardList = newList
+
         } else {
             addItem(item)
         }
+    }
+    fun updateList(newList: List<CardData>) {
+        cardList = newList.toMutableList()
+        notifyDataSetChanged()
     }
 
     fun removeItem(item: CardData) {
@@ -152,4 +161,20 @@ class CardAdapter(val context: Context) :
         val baseUrl = imageUrl.substringBeforeLast("=")
         return "${baseUrl}=250x250"
     }
+
+    fun filter(query: String) {
+        val filteredList = if (query.isEmpty()) {
+            fullList // Полный список, если строка пуста
+        } else {
+            fullList.filter {
+                it.name!!.contains(query, ignoreCase = true) ||
+                        it.lastname!!.contains(query, ignoreCase = true) ||
+                        it.subject!!.contains(query, ignoreCase = true)
+            }
+        }
+        updateList(filteredList)
+    }
+
+
+
 }
