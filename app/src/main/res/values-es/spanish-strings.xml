@@ -35,4 +35,6 @@
     <string name="add_resource">Agregar recurso</string>
     <string name="input_text">Entrada</string>
     <string name="save_label">Guardar</string>
+
+    <string name="watch_label">Mira</string>
 </resources>

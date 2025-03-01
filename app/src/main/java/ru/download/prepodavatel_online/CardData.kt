@@ -11,5 +11,7 @@ data class CardData(
     var rating: Int? = null,
     var vkId: String? = null,
     var author: String? = null,
-    var deskription: String? = null
+    var deskription: String? = null,
+    var label: String? = null,
+    var link: String? = null,
 )

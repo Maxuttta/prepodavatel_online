@@ -31,5 +31,6 @@
     <string name="add_resource">Add resource</string>
     <string name="input_text">Input</string>
     <string name="save_label">Save</string>
+    <string name="watch_label">watch</string>
 
 </resources>

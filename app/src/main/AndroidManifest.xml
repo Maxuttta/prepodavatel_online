@@ -13,17 +13,29 @@
         android:theme="@style/Theme.Prepodavatel_online"
         tools:targetApi="31">
         <activity
+            android:name=".add_resource"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".watch_video"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
             android:name=".Article_about"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".scientific_articles"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".videos_activity"
+            android:screenOrientation="portrait"
             android:exported="false" />
 
         <meta-data
             android:name="android.app.splash_screen"
+            android:screenOrientation="portrait"
             android:value="false" />
 
         <activity

@@ -22,6 +22,11 @@ class scientific_articles : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_scientific_articles)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         adapter = CardAdapter(this@scientific_articles) // <-- Инициализация адаптера
         cardRec.layoutManager = LinearLayoutManager(this)

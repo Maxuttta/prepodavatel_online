@@ -24,7 +24,7 @@ import com.vk.id.VKID
 class CardAdapter(val context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var cardList = mutableListOf<CardData>()
-    private val ITEM_TEST = 3
+    private val ITEM_VIDEO = 3
     private val ITEM_ARTICLE = 2
     private val ITEM_TEACHER = 1
 
@@ -48,10 +48,11 @@ class CardAdapter(val context: Context) :
         val read_text = itemView.findViewById<ConstraintLayout>(R.id.read_text)
     }
 
-    class CardTestHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.findViewById<TextView>(R.id.title)
-        val subtitle = itemView.findViewById<TextView>(R.id.subtitle)
-        val author = itemView.findViewById<TextView>(R.id.author)
+    class CardVideoHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val platform = itemView.findViewById<TextView>(R.id.platform)
+        val nazvan_video = itemView.findViewById<TextView>(R.id.nazvan_video)
+        val authorvideo = itemView.findViewById<TextView>(R.id.authorvideo)
+        val watch_video = itemView.findViewById<ConstraintLayout>(R.id.watch_video)
     }
 
 
@@ -61,8 +62,10 @@ class CardAdapter(val context: Context) :
             ITEM_TEACHER
         } else if (currentCard.type == "article") {
             return ITEM_ARTICLE
-        } else {
-            return ITEM_TEST
+        } else if (currentCard.type == "video"){
+            return ITEM_VIDEO
+        } else{
+            return ITEM_VIDEO
         }
     }
 
@@ -71,8 +74,8 @@ class CardAdapter(val context: Context) :
         return when (viewType) {
             3 -> {
                 val view: View = LayoutInflater.from(context)
-                    .inflate(R.layout.test_card, parent, false)
-                CardTestHolder(view)
+                    .inflate(R.layout.video_card, parent, false)
+                CardVideoHolder(view)
             }
 
             2 -> {
@@ -142,8 +145,26 @@ class CardAdapter(val context: Context) :
             }
         }
         else {
-            val holder = holder as CardTestHolder
-            holder.apply {}
+            val holder = holder as CardVideoHolder
+            holder.apply {
+                val link = currentCard.link
+                if(link!!.contains("rutube"))
+                    platform.text = "Видео с Rutube"
+                else
+                    platform.text = "Цифровое видео"
+                nazvan_video.text = currentCard.label
+                authorvideo.text = "Автор: ${currentCard.author}"
+                watch_video.setOnClickListener {
+                    val videoUrl = currentCard.link
+                    if (!videoUrl.isNullOrEmpty()) {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl))
+                        context.startActivity(intent)
+                    } else {
+                        Toast.makeText(context, "Ссылка на видео отсутствует", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            }
         }
     }
 
