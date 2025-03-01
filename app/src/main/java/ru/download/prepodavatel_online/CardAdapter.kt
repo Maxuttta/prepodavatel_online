@@ -1,12 +1,17 @@
 package ru.download.prepodavatel_online
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -30,6 +35,8 @@ class CardAdapter(val context: Context) :
         val subject = itemView.findViewById<TextView>(R.id.subject)
         val ava = itemView.findViewById<ImageView>(R.id.ava)
         val rating = itemView.findViewById<RatingBar>(R.id.rating)
+        val message_to_teacher = itemView.findViewById<CardView>(R.id.message_to_teacher)
+        val call_to_teacher = itemView.findViewById<CardView>(R.id.call_to_teacher)
     }
 
     class CardArticleHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -89,7 +96,6 @@ class CardAdapter(val context: Context) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         val currentCard = cardList[position]
-
         if (holder.javaClass == CardTeacherHolder::class.java) {
             val holder = holder as CardTeacherHolder
             holder.apply {
@@ -99,6 +105,21 @@ class CardAdapter(val context: Context) :
                 val avaUr = replaceImageSize("${currentCard.avaUrl}")
                 Picasso.get().load(avaUr).into(ava)
                 rating.rating = currentCard.rating!!.toFloat()
+
+                message_to_teacher.setOnClickListener {
+                    val id = currentCard.vkId
+                    val url = "https://vk.com/im?sel=$id"
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    context.startActivity(intent)
+                }
+
+                call_to_teacher.setOnClickListener {
+                    val id = currentCard.vkId
+                    val url = "https://vk.com/call?id=$id"
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    context.startActivity(intent)
+                }
+
             }
         } else if (holder.javaClass == CardArticleHolder::class.java) {
             val holder = holder as CardArticleHolder
@@ -106,9 +127,7 @@ class CardAdapter(val context: Context) :
         }
         else {
             val holder = holder as CardTestHolder
-            holder.apply {
-
-            }
+            holder.apply {}
         }
     }
 

@@ -15,10 +15,12 @@
 
         <meta-data android:name="android.app.splash_screen" android:value="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".LoginScreen"
             android:exported="false">
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Splash"
             android:exported="true">
             <intent-filter>
@@ -28,6 +30,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

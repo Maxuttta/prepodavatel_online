@@ -96,6 +96,7 @@
             app:layout_constraintTop_toBottomOf="@+id/lastname" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/message_to_teacher"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:backgroundTint="@color/blue1"
@@ -115,6 +116,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/call_to_teacher"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:backgroundTint="@color/blue1"
