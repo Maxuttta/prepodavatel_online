@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
     private val scientific_articles2 by lazy { findViewById<CardView>(R.id.scientific_articles) }
     private val obraz_videos_card by lazy { findViewById<CardView>(R.id.obraz_videos_card) }
     private val findRep by lazy { findViewById<CardView>(R.id.findRep) }
-    private val add_res by lazy { findViewById<ConstraintLayout>(R.id.add_res) }
+    private val add_res by lazy { findViewById<CardView>(R.id.add_res) }
 
     data class TeacherData(
         val firstName: String? = null,
@@ -174,7 +174,10 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
             chipNavigationBar.setItemSelected(R.id.search)
         }
         add_res.setOnClickListener {
-
+            val intent = Intent(this, add_resource::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+            finish()
         }
     }
 

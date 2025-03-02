@@ -252,6 +252,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/add_res"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -263,7 +264,6 @@
             app:cardCornerRadius="15dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/add_res"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/card_back">
