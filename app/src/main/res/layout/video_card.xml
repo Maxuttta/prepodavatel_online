@@ -87,7 +87,7 @@
             android:layout_marginStart="10dp"
             android:fontFamily="@font/gothampro"
             android:gravity="center"
-            android:text="Автор: Екатерина Мизулина"
+            android:text="Автор: Иванов Иван"
             android:textColor="@color/white"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"

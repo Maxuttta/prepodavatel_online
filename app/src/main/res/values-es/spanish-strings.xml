@@ -37,4 +37,11 @@
     <string name="save_label">Guardar</string>
 
     <string name="watch_label">Mira</string>
+    <string name= "add_video" >Añadir vídeo</string >
+    <string name= "title_text" >Título*</string >
+    <string name="send_to_moderate" >Enviar</string>
+    <string name= "link_text" >Enlace*</string >
+    <string name= "video_send_to_mod" > Video enviado a moderación</string>
+
+    <string name="check_data">Compruebe los datos en los campos!</string>
 </resources>

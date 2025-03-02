@@ -37,4 +37,11 @@
     <string name="save_label">Сохранить</string>
 
     <string name="watch_label">смотреть</string>
+    <string name="add_video">Добавить видео</string>
+    <string name="title_text">Заголовок*</string>
+    <string name="send_to_moderate">Отправить</string>
+    <string name="link_text">Ссылка*</string>
+    <string name="video_send_to_mod">Видео отправлено на модерацию</string>
+
+    <string name="check_data">Проверьте данные в полях!</string>
 </resources>

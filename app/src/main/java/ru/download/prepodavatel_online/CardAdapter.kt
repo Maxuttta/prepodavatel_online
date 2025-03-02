@@ -39,6 +39,7 @@ class CardAdapter(val context: Context) :
         val rating = itemView.findViewById<RatingBar>(R.id.rating)
         val message_to_teacher = itemView.findViewById<CardView>(R.id.message_to_teacher)
         val call_to_teacher = itemView.findViewById<CardView>(R.id.call_to_teacher)
+        val main = itemView.findViewById<CardView>(R.id.bg)
     }
 
     class CardArticleHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -125,6 +126,13 @@ class CardAdapter(val context: Context) :
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                     context.startActivity(intent)
                 }
+                main.setOnClickListener {
+                    val id = currentCard.vkId
+                    val intent = Intent(context, ViewTeacher::class.java).apply {
+                        putExtra("id", id)
+                    }
+                    context.startActivity(intent)
+                }
 
             }
         } else if (holder.javaClass == CardArticleHolder::class.java) {
@@ -173,15 +181,19 @@ class CardAdapter(val context: Context) :
     }
 
     fun addItem(item: CardData) {
-        val newList = mutableListOf<CardData>()
-        newList.addAll(cardList)
-        newList.add(item)
-        mDiffResult = DiffUtil.calculateDiff(DiffUtilCard(cardList, newList))
-        mDiffResult.dispatchUpdatesTo(this)
-        cardList = newList
-        fullList.add(item)
-        filter("")
-
+        if(item.status == true || item.subject != null){
+            val newList = mutableListOf<CardData>()
+            newList.addAll(cardList)
+            newList.add(item)
+            mDiffResult = DiffUtil.calculateDiff(DiffUtilCard(cardList, newList))
+            mDiffResult.dispatchUpdatesTo(this)
+            cardList = newList
+            fullList.add(item)
+            filter("")
+        }
+        else{
+            Log.d("VIDEOS", "Не прошло модерацию")
+        }
     }
 
     fun updateItem(item: CardData) {

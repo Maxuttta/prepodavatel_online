@@ -14,4 +14,5 @@ data class CardData(
     var deskription: String? = null,
     var label: String? = null,
     var link: String? = null,
+    var status: Boolean? = null
 )

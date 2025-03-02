@@ -41,7 +41,7 @@ class scientific_articles : AppCompatActivity() {
         childEventListener = AppChildEventListener { snapshot, eventType ->
             when (eventType) {
                 1 -> {
-                    adapter.updateItem(snapshot.getCardModel())
+                    adapter.addItem(snapshot.getCardModel())
                 }
 
                 2 -> {

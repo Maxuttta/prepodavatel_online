@@ -33,4 +33,12 @@
     <string name="save_label">Save</string>
     <string name="watch_label">watch</string>
 
+    <string name="add_video">Add video</string>
+    <string name="title_text">Title*</string>
+    <string name="send_to_moderate">submit</string>
+    <string name="link_text">Link*</string>
+    <string name="video_send_to_mod">Video submitted for moderation</string>
+
+    <string name="check_data">Check the data in the fields!</string>
+
 </resources>
