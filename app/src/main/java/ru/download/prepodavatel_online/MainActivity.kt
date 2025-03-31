@@ -3,9 +3,11 @@ package ru.download.prepodavatel_online
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,10 +19,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -33,6 +37,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.squareup.picasso.Picasso
 import com.vk.id.VKID
+import ru.rustore.sdk.core.feature.model.FeatureAvailabilityResult
+import ru.rustore.sdk.pushclient.RuStorePushClient
+import ru.rustore.sdk.pushclient.common.logger.DefaultLogger
+import ru.rustore.sdk.pushclient.messaging.model.TestNotificationPayload
+import ru.rustore.sdk.pushclient.utils.resolveForPush
 import java.util.Locale
 
 class MainActivity : AppCompatActivity(), CardAdapter.Listener {
@@ -50,6 +59,16 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
     }
     private val age_of_teacher by lazy {
         findViewById<TextView>(R.id.age)
+    }
+
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission(),
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            // RuStore Push SDK (and your app) can post notifications.
+        } else {
+            // TODO: Inform user that your app will not show notifications.
+        }
     }
 
     private lateinit var childEventListener: ChildEventListener
@@ -114,12 +133,58 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
                 description = description ?: teacherData.description
             )
         }
+
     }
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        val requestPermissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission(),
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                // RuStore Push SDK (and your app) can post notifications.
+            } else {
+                // TODO: Inform user that your app will not show notifications.
+            }
+        }
+        RuStorePushClient.init(
+            application = this.application,
+            projectId = "xhu6ujxTrGct06a3E7iXQd3t3cxAfrTO",
+            testModeEnabled = true
+        )
+        RuStorePushClient.checkPushAvailability()
+            .addOnSuccessListener { result ->
+                when (result) {
+                    FeatureAvailabilityResult.Available -> {
+                        // Process push available
+                    }
+
+                    is FeatureAvailabilityResult.Unavailable -> {
+                        result.cause.resolveForPush(this)
+                    }
+                }
+            }
+            .addOnFailureListener { throwable ->
+                // Process error
+            }
+        RuStorePushClient.getToken()
+            .addOnSuccessListener { result ->
+                // Process success
+            }
+            .addOnFailureListener { throwable ->
+                // Process error
+            }
+        val testNotificationPayload = TestNotificationPayload(
+            title = "Test notification title",
+            body = "Test notification message",
+            imgUrl = "some_image_http_url",
+            data = mapOf("some_key" to "some_value")
+        )
+
+        RuStorePushClient.sendTestNotification(testNotificationPayload)
 
         Home = findViewById(R.id.homeScreen)
         Settings = findViewById(R.id.settingsScreen)
@@ -147,7 +212,7 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
         chipNavigationBar.setItemSelected(R.id.home, true)
         adapter = CardAdapter(this)
 
-
+        askNotificationPermission()
         loadPrepodData()
         goScreens()
         loadCards()
@@ -155,6 +220,24 @@ class MainActivity : AppCompatActivity(), CardAdapter.Listener {
         cardRec.layoutManager = LinearLayoutManager(this@MainActivity)
         cardRec.adapter = adapter
         loadListenersOnButtons()
+    }
+
+    private fun askNotificationPermission() {
+        // This is only necessary for API level>= 33 (TIRAMISU)
+        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) ==
+                PackageManager.PERMISSION_GRANTED) {
+                // RuStore Push SDK (and your app) can post notifications.
+            } else if (shouldShowRequestPermissionRationale(android.Manifest.permission.POST_NOTIFICATIONS)) {
+                // TODO: display an educational UI explaining to the user the features that will be enabled
+                //       by them granting the POST_NOTIFICATION permission. This UI should provide the user
+                //       "OK" and "No thanks" buttons. If the user selects "OK," directly request the permission.
+                //       If the user selects "No thanks," allow the user to continue without notifications.
+            } else {
+                // Directly ask for the permission
+                requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
     }
 
     private fun loadListenersOnButtons() {
